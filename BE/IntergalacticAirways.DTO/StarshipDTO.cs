@@ -35,5 +35,6 @@ namespace IntergalacticAirways.DTO
 			public string Manufacturer { get; set; }
 			public string Passengers { get; set; }
 			public IEnumerable<string> Pilots { get; set; }
+			public IEnumerable<PersonDTO> PilotList {get;set;}
 	}
 }

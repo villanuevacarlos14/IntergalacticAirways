@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <label>Search starship that can accomodate  </label>
+    <input type="number" class="form-control" formControlName="search"/> 
+    <label> passengers </label>
+    <button type="submit">
+        Search Starship <span *ngIf="loading">Loading</span>
+    </button>
+</form>
+
+<div *ngFor="let x of starships">
+   <ul>
+      <li>
+        <div>
+            <div>Name: {{x.name}}</div>
+            <div>Model: {{x.model}}</div>
+            <div>manufacturer: {{x.manufacturer}}</div>
+            <div>Passengers: {{x.passengers}}</div>
+            <div>Pilots: {{x.pilots}}</div>
+        </div>
+      </li>
+   </ul>
+</div>
