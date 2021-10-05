@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{E5442BD3-50A1-48CE-8F6F-A011C601ADBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BE", "BE", "{E7DE5B76-B1F6-4B8C-ADA0-C28D8640DFC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalacticAirways.API", "IntergalcticAirways.API\IntergalacticAirways.API.csproj", "{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalacticAirways.Service", "IntergalacticAirways.Service\IntergalacticAirways.Service.csproj", "{05E13B86-3019-411A-8D76-365A21C3ACEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalacticAirways.DTO", "IntergalacticAirways.DTO\IntergalacticAirways.DTO.csproj", "{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalacticeAirways.DataAccess", "IntergalacticeAirways.DataAccess\IntergalacticeAirways.DataAccess.csproj", "{93572CD0-20E6-4F67-9F5C-9EFA68C37167}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E13B86-3019-411A-8D76-365A21C3ACEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E13B86-3019-411A-8D76-365A21C3ACEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E13B86-3019-411A-8D76-365A21C3ACEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E13B86-3019-411A-8D76-365A21C3ACEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93572CD0-20E6-4F67-9F5C-9EFA68C37167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93572CD0-20E6-4F67-9F5C-9EFA68C37167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93572CD0-20E6-4F67-9F5C-9EFA68C37167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93572CD0-20E6-4F67-9F5C-9EFA68C37167}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E36E9A3-C204-4CC6-B9E7-4BB365D0D412} = {E7DE5B76-B1F6-4B8C-ADA0-C28D8640DFC1}
+		{05E13B86-3019-411A-8D76-365A21C3ACEA} = {E7DE5B76-B1F6-4B8C-ADA0-C28D8640DFC1}
+		{C4E5F452-FC3C-4AFB-B147-AF07D862E4B9} = {E7DE5B76-B1F6-4B8C-ADA0-C28D8640DFC1}
+		{93572CD0-20E6-4F67-9F5C-9EFA68C37167} = {E7DE5B76-B1F6-4B8C-ADA0-C28D8640DFC1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F32E9F15-60B2-4556-B593-82982D5B26F7}
+	EndGlobalSection
+EndGlobal
