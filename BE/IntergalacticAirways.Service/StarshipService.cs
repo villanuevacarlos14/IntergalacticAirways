@@ -62,17 +62,6 @@ namespace IntergalacticAirways.Service
             })
             .ToList();
 
-            //there's probably more elegent way to do this but didnt get much time so
-            Parallels.ForeEach(getOnlyStarshipsThatHavePassengersAndCanAccomodatePassengerCount, x=>{
-                if(x.Pilots.Any())
-                {
-                    x.PilotList = new List<PilotDTO>();
-                    x.Pilots.ForEach(r=>{
-                        //x.PilotList.A
-                    });
-                }
-            });
-
             return getOnlyStarshipsThatHavePassengersAndCanAccomodatePassengerCount;
         }
     }
