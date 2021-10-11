@@ -33,8 +33,24 @@ namespace IntergalacticAirways.DTO
 			public string Name { get; set; }
 			public string Model { get; set; }
 			public string Manufacturer { get; set; }
-			public string Passengers { get; set; }
+
+			
+			private string _passengers;
+				public string Passengers { get 
+				{
+					//some of the response from the external api contains a non number result on the passenger count
+					//sample "n/a"
+					if (!int.TryParse(_passengers, out int passengersCount))
+					{
+						return "0";
+					}
+
+					return _passengers;
+				}
+				set {
+					_passengers = value;
+				} 
+			}
 			public IEnumerable<string> Pilots { get; set; }
-			public IEnumerable<PersonDTO> PilotList {get;set;}
 	}
 }

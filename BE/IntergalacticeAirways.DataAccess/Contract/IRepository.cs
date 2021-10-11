@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntergalacticAirways.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace IntergalacticeAirways.DataAccess.Contract
 {
     public interface IRepository
     {
-        Task<T> Retrieve<T>(string url) where T : class;
+        Task<ResultOrError<T>> Retrieve<T>(string url) where T : class;
     }
 }

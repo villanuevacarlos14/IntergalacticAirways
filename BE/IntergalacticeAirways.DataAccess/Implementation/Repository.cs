@@ -1,4 +1,5 @@
-﻿using IntergalacticeAirways.DataAccess.Contract;
+﻿using IntergalacticAirways.DTO;
+using IntergalacticeAirways.DataAccess.Contract;
 using IntergalacticeAirways.DataAccess.Model;
 using RestSharp;
 using RestSharp.Serializers.NewtonsoftJson;
@@ -16,21 +17,28 @@ namespace IntergalacticeAirways.DataAccess.Implementation
         public Repository(IRestClient restClient) {
             _restClient = restClient;
         }
-        public async Task<T> Retrieve<T>(string url) where T : class
+        public async Task<ResultOrError<T>> Retrieve<T>(string url) where T : class
         {
+            var dataResp = new ResultOrError<T>();
+           
             try {
-                //get this later from appsettings.json
                 var cancellationTokenSource = new System.Threading.CancellationTokenSource();
                 _restClient.BaseUrl = new Uri(url);
+
+                //coould probably set this up on the startup pipeline
                 _restClient.UseNewtonsoftJson();
 
                 var request = new RestRequest(Method.GET);
                 var response = await _restClient.ExecuteAsync(request, cancellationTokenSource.Token);
                 var responseModel = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(response.Content);
-                return responseModel;
+                dataResp.Data = responseModel;
+                dataResp.IsError = false;
             } catch (Exception ex) {
-                throw ex;
+                dataResp.IsError = true;
+                dataResp.Error = ex;
             }
+
+            return dataResp;
         }
     }
 }
