@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IntergalacticAirways.Service
 {
-    public interface IStarshipService 
+    public interface IStarshipService
     {
         Task<IEnumerable<StarshipDTO>> RetrieveStarships(int passengerCount);
     }
@@ -19,7 +19,7 @@ namespace IntergalacticAirways.Service
     {
         private readonly IRepository _repository;
         private readonly IMapper _mapper;
-        public StarshipService(IRepository repository, IMapper mapper) 
+        public StarshipService(IRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -31,24 +31,24 @@ namespace IntergalacticAirways.Service
             //tried looking for a filter also on swapi documentation but they only provide filtering it out by name?
             //So to get all the data, I dont know of another way but to loop through the paginated response? I really think this is wrong :D (- points :'()
             var result = new ResultOrError<IEnumerable<StarshipDTO>>();
-           
+
             //call the api first so I can get the total number of data
             var response = await _repository.Retrieve<IntergalacticeAirways.DataAccess.Model.Response.StarshipResponse>("https://swapi.dev/api/starships");
 
             //if first api call is error throw the error
-            if (response.IsError) 
+            if (response.IsError)
             {
                 throw response.Error;
             }
-            
+
             //calculate total pages
-            var totalPages = (int)Math.Ceiling((double)response.Data.Count / 10);
+            var totalPages = (int)Math.Ceiling((double)response.Data.Count / response.Data.Results.Count());
 
             //initialise the list of tasks
             var listOfTasks = new List<Task<ResultOrError<StarshipResponse>>>();
 
             //loop through total pages
-            for (int x = 1; x <= totalPages; x++) 
+            for (int x = 1; x <= totalPages; x++)
             {
                 //sorry swapi for bombarding you with requests XD
                 listOfTasks.Add(_repository.Retrieve<StarshipResponse>($"https://swapi.dev/api/starships/?page={x}"));
@@ -56,7 +56,8 @@ namespace IntergalacticAirways.Service
 
             var results = (await Task.WhenAll(listOfTasks)).ToList();
             var list = new List<StarshipDTO>();
-            results.ForEach(res => {
+            results.ForEach(res =>
+            {
 
                 //can handle the error here
                 if (res.IsError)
@@ -65,7 +66,7 @@ namespace IntergalacticAirways.Service
                     //handle error here maybe implement a retry?
                     //or just throw the error to stop the appliocation
                 }
-                else 
+                else
                 {
                     list.AddRange(_mapper.Map<IEnumerable<StarshipDTO>>(res.Data.Results));
                 }
@@ -75,7 +76,8 @@ namespace IntergalacticAirways.Service
 
             /// this can be handled with a setting on the startup pipeline or modify the set/get of the property
             /// setting up the json serialization but didnt want to spend more time :D
-            var getOnlyStarshipsThatHavePassengersAndCanAccomodatePassengerCount = list.Where(x => {
+            var getOnlyStarshipsThatHavePassengersAndCanAccomodatePassengerCount = list.Where(x =>
+            {
                 if (int.TryParse(x.Passengers, out int v))
                 {
                     if (v >= passengerCount)
@@ -87,7 +89,7 @@ namespace IntergalacticAirways.Service
                         return false;
                     }
                 }
-              
+
                 return false;
             });
 
